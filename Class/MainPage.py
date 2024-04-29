@@ -56,22 +56,25 @@ class MainPage(tk.Frame):
     def __init__(self,master):
         tk.Frame.__init__(self ,master = master)
         self.board = Board(self)
-        self.player_1_label = tk.Label(self, text="Player 1: X", font=('Arial', 12))
-        self.score_label = tk.Label(self, text="Score: 0 - 0", font=('Arial', 12))
-        self.player_2_label = tk.Label(self, text="Player 2: O", font=('Arial', 12))
+        self.player_1_label = tk.Label(self, text="Player 1: X", font=('Times New Roman bold', 12))
+        self.score_label = tk.Label(self, text="Score: 0 - 0", font=('Times New Roman bold', 12))
+        self.player_2_label = tk.Label(self, text="Player 2: O", font=('Times New Roman bold', 12))
         self.player1 = Player("X" ,0)
         self.player2 = Player("O" ,0)
         
-        self.quit_button = tk.Button(self, text="quit", font=('Arial',12), command= lambda : self.quit())
-        self.reset_game_button = tk.Button(self, text="reset", font = ('Arial',12), command= lambda : self.reset_game())
+        self.quit_button = tk.Button(self, text="QUIT",width=6, font=('Times New Roman bold',12), relief = 'solid',command= lambda : self.quit())
+        self.reset_game_button = tk.Button(self, text="RESET",width=6, font = ('Times New Roman bold',12), relief = 'solid',command= lambda : self.reset_game())
 
     def add_to_page(self):
-        self.player_1_label.grid(row=1, column=0,padx=(10,1))
-        self.score_label.grid(row=1, column=1)
-        self.player_2_label.grid(row=1, column=2)
-        self.board.grid(row=0, column=0, columnspan=3)
-        self.quit_button.grid(row=3, column=1,)
-        self.reset_game_button.grid(row=2,column=1)
+        self.board.grid(row=3, column=3, columnspan=3,padx=(10,10),pady=(10,10))
+        
+        self.player_1_label.grid(row=4, column=3,padx=(1,1),pady=(1,1))
+        self.score_label.grid(row=4, column=4,padx=(1,1),pady=(1,1))
+        self.player_2_label.grid(row=4, column=5,padx=(1,1),pady=(1,1))
+        
+        self.reset_game_button.grid(row=5,column=4,padx=(1,1),pady=(1,10))
+        self.quit_button.grid(row=6, column=4,padx=(1,1),pady=(1,1))
+        
     
     def reset_game(self):
         self.board.reset_game()
