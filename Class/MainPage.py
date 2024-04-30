@@ -11,7 +11,7 @@ class Board(tk.Frame):
         # list of buttons having empty text using list comprehension
         self.buttons = []
         for i in range(9):
-            btn = tk.Button(self, text="", font=('Arial', 20), width=8, height=4,
+            btn = tk.Button(self, text="", font=('Arial', 20), width=8, height=4,relief = 'solid',
                                 command=lambda pos = i: self.on_click(pos))
             btn.grid(row=i%3, column=i//3)
             self.buttons.append(btn)
@@ -34,6 +34,9 @@ class Board(tk.Frame):
         if (self.ticTacToe.check_draw()):
             messagebox.showinfo("Tic Tac Toe", "Draw")
             return
+
+    def set_border(self):
+        self.buttons[pos].set_border() 
 
     def switch_player(self):
         if(self.ticTacToe.check_win()):
@@ -66,9 +69,9 @@ class MainPage(tk.Frame):
         self.reset_game_button = tk.Button(self, text="RESET",width=6, font = ('Times New Roman bold',12), relief = 'solid',command= lambda : self.reset_game())
 
     def add_to_page(self):
-        self.board.grid(row=3, column=3, columnspan=3,padx=(10,10),pady=(10,10))
+        self.board.grid(row=3, column=3, columnspan=3,padx=(150,10),pady=(80,10))
         
-        self.player_1_label.grid(row=4, column=3,padx=(1,1),pady=(1,1))
+        self.player_1_label.grid(row=4, column=3,padx=(150,1),pady=(1,1))
         self.score_label.grid(row=4, column=4,padx=(1,1),pady=(1,1))
         self.player_2_label.grid(row=4, column=5,padx=(1,1),pady=(1,1))
         
