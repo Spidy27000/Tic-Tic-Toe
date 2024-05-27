@@ -8,7 +8,7 @@ class MainApp(tk.Tk):
         root.geometry("700x800")
         root.mainPage = MainPage(root)
         root.button_play = tk.Button(root, text = "Play",height=3,width= 15,font=('Times New Roman bold', 18),relief = 'solid', command=lambda: root.init_game())
-        root.butto_play.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
+        root.button_play.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
         root.Label12 = tk.Label(root , text = "TIC TAC TOE",font=('Times New Roman bold',20))
         root.Label12.pack()
         
