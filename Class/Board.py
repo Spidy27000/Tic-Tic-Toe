@@ -1,17 +1,29 @@
 from Class.Consts import *
 
-class TicTacToe:
+class Board:
     def __init__(self):
         self.board =[0 for _ in range(9)]
         self.player = X_PLAYER
-    def make_move(self,pos):
-        if (self.player == X_PLAYER and self.check_valid_move(pos)):
-            self.board[pos] = X_PLAYER
-            self.player = O_PLAYER
-        elif (self.player == O_PLAYER and self.check_valid_move(pos)):
-            self.board[pos] = O_PLAYER
-            self.player = X_PLAYER
-        return self.board[pos]
+    def make_move(self,pos,type:str|None=None):
+        if type is None:
+            if (self.player == X_PLAYER and self.check_valid_move(pos)):
+                self.board[pos] = X_PLAYER
+                self.player = O_PLAYER
+            elif (self.player == O_PLAYER and self.check_valid_move(pos)):
+                self.board[pos] = O_PLAYER
+                self.player = X_PLAYER
+            return self.board[pos]
+        else:
+            self.board[pos] = type
+            return type
+
+    def copy():
+        res = Board()
+        res.board = self.board.copy()
+        res.player = self.player
+        return res
+        
+
     def check_win(self):
         if (self.board[0] == self.board[1] == self.board[2]!= 0):
             return self.board[0]
@@ -41,6 +53,13 @@ class TicTacToe:
             return True
         else:
             return False
+    def get_valid_moves(self):
+         res=[]
+         for i in board:
+             if i ==0:
+                 res.append(i)
+         return res
+         
     def reset(self):
         self.board =[0 for _ in range(9)]
         self.player = X_PLAYER 
